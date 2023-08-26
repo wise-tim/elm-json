@@ -4,7 +4,7 @@ var path = require("path");
 var packageInfo = require(path.join(__dirname, "package.json"));
 var version = packageInfo.version;
 var root =
-    "https://github.com/zwilias/elm-json/releases/download/v" +
+    "https://github.com/wise-tim/elm-json/releases/download/v" +
     version +
     "/elm-json-v" +
     version;
