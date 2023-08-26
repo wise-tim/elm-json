@@ -127,7 +127,11 @@ impl Retriever {
 
     fn fetch_versions(&mut self) -> Result<()> {
         let file = Self::cache_file()?;
-        file.lock_exclusive()?;
+        let lock_result = file.try_lock_exclusive();
+
+        if lock_result.is_err() {
+            warn!("Failed to obtain file lock");
+        }
 
         let mut versions: HashMap<_, _> = self.fetch_cached_versions(&file).unwrap_or_default();
 
